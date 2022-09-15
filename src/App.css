@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+  --background-gray: #F2F2F2;
+  --background-secondary: #FFFFFF;
+  --theme-color-blue: #086AED;
+  --theme-color-light-blue: #4B98EF;
+  --foreground-primary: #101125;
+  --foreground-secondary: #494A59;
+  --foreground-disabled: #B3B3B9;
+  --foreground-error: #FF3737;
+  --foreground-valid: #18C348;
+  --foreground-theme-overlay: #FFFFFF;
+  --border-default: #B3B3B9;
+  --border-active: #086AED;
+  --border-hover: #4B98EF;
+  --border-error: #EF4B4B;
+  --border-valid: #18C348;
+
+  --dropshadow-topbar: 0px 2px 30px rgba(0, 0, 0, 0.15);
+  --dropshadow-card: 0px 2px 30px rgba(0, 0, 0, 0.1);
+  --dropshadow-card-or-button: 0px 0px 30px rgba(0, 0, 0, 0.15);
+
+  --border-radius-primary: 15px;
+  --border-radius: 10px;
+}
+
+select, input[type="text"], input[type="password"], input[type="email"], input[type="tel"]{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 12.5px 10px;
+	border-radius: var(--border-radius);
+	border: 2px solid var(--border-default);
+	font-family: 'Nunito Sans';
+	outline: none;
+}
+
+select:focus-within, input[type="text"]:focus-within, input[type="password"]:focus-within, input[type="email"]:focus-within, input[type="tel"]:focus-within{
+	outline: none;
+	border: 2px solid var(--border-active);
+}
+
+input[type="file"] {
+	width: 100%;
+  box-sizing: border-box;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid transparent;
+  line-height: calc(120% + 25px);
+  padding-left: 10px;
+	position: relative;
+}
+
+input[type="file"]:focus-within{
+	outline: none;
+	border: 2px solid var(--border-active);
+  overflow: hidden;
+}
+
+input[type="file"]:focus-within::file-selector-button{
+	border-radius: 0;
+
+}
+
+input[type="file"]::file-selector-button{
+	background-color: var(--theme-color-blue);
+	color: var(--foreground-theme-overlay);
+	padding: 12.5px 15px;
+	border-radius: var(--border-radius);
+	position: absolute;
+	border: none;
+	outline: none;
+	font-size: 12px;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 100%;
+  transition: all linear 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button, input[type="submit"]{
+  font-family: 'Nunito Sans';
+	background-color: var(--theme-color-blue);
+	color: var(--foreground-theme-overlay);
+	padding: 12.5px 15px;
+	border-radius: var(--border-radius);
+	position: relative;
+	border: none;
+	outline: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover, input[type="file"]::file-selector-button:hover{
+  background-color: var(--theme-color-light-blue);
+}
+
+h1{
+  font-size: 56px;
+  line-height: 110%;
+  font-weight: bold;
+  text-align: left;
+  color: var(--foreground-primary);
+}
+h2{
+  font-size: 48px;
+  line-height: 120%;
+  font-weight: bold;
+  text-align: left;
+  color: var(--foreground-primary);
+}
+h3{
+  font-size: 32px;
+  line-height: 120%;
+  font-weight: bold;
+  text-align: left;
+  color: var(--foreground-primary);
+}
+h4{
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: bold;
+  text-align: left;
+  color: var(--foreground-primary);
+}
+
+button.nav-button{
+	padding: 0 5px;
+  font-size: 16px;
+  height: 50px;
+  font-weight: bold;
+  color: var(--foreground-primary);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: var(--border-radius-primary);
+  border: none;
+  background: var(--background-secondary);
+  margin-bottom: 15px;
+}
+
+button.nav-button:hover{
+  box-shadow: var(--dropshadow-card-or-button);
+}
+
+button.nav-button svg{
+  height: 35px;
+  max-width: 35px;
+  margin-right: 5px;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scroll-bar::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+.App {
+  height: 100vh;
+  text-align: center;
+  background-color: var(--background-gray);
+  font-family: 'Nunito Sans';
+}
+
+.App-Icon{
+  max-height: 70%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.App-header {
+  background-color: var(--background-secondary);
+  /* min-height: 70px; */
+  height: max(7.8vh, 70px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: var(--foreground-primary);
+  font-size: 24px;
+  padding: 0 40px;
+  box-shadow: var(--dropshadow-topbar);
+  position: relative;
+  z-index: 9999;
+  font-weight: 600;
+}
+
+main{
+  height: calc(100% - max(7.8vh, 70px));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav-panel{
+  display: block;
+  width: 22.57vw;
+  min-width: 300px;
+  background-color: var(--background-secondary);
+  height: 100%;
+  box-shadow: var(--dropshadow-card);
+  position: relative;
+  z-index: 9990;
+  padding: 40px 0 10px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-panel-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.nav-panel-top > span{
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: var(--foreground-secondary);
+  font-size: 20px;
+}
+
+.nav-panel-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.content-area{
+  height: calc(100vh - max(7.8vh, 70px));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-area .content-path{
+  width: 100%;
+  padding: 0 0 0 0;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--foreground-secondary);
+  box-sizing: border-box;
+  padding-bottom: 25px;
+}
+
+.content-area .content-path>*{
+  margin-right: 5px;
+}
+
+.content-area .content-path>svg{
+  height: 30px;
+  max-width: 30px;
+}
+
+.content-area .content{
+  height: 100%;
+  max-height: 100%;
+  padding: 30px 50px 30px 50px;
+  box-sizing: border-box;
+}
