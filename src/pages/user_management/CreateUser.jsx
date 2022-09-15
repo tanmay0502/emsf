@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './styles/createuser.css'
 import { ReactComponent as UserManagementIcon } from '../../assets/Users.svg';
 import { ReactComponent as ChevronRightIcon } from '../../assets/ChevronRight.svg';
-
+var sha256 = require('js-sha256');
 
 
 function CreateUser() {
@@ -20,12 +20,12 @@ function CreateUser() {
   const [UserImage,setUserImage] = useState("")
 
   const [PasswordHash,setPasswordHash] = useState("")
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async(e) => {
     e.preventDefault();
 
     setUserId(document.getElementById("formUserID").value);
     setUserName(document.getElementById("formUserName").value);
-    setUserPassword(document.getElementById("formUserPassword").value);
+    // setUserPassword(document.getElementById("formUserPassword").value);
     setUserEmail(document.getElementById("formUserEmail").value);
     setUserMobile(document.getElementById("formUserMobileNumber").value);
     setUserAddress(document.getElementById("formUserAddress").value);
@@ -33,33 +33,33 @@ function CreateUser() {
     setUserAltContact2(document.getElementById("formUserAltNumber2").value);
     setUserImage(document.getElementById("formUserImage").files[0]);
 
-    setPasswordHash(UserPassword); // Generate Password hash here
+    // setPasswordHash(UserPassword); // Generate Password hash here
     var fr = new FileReader();
-    fr.onload = () => {
-      setFrs(fr.name);
-      const ReqJSON = {
-        userID: UserId,
-        email: UserEmail,
-        name: UserName,
-        mobilenumber: UserMobile,
-        address: UserAddress,
-        othercontactnum1: UserAltContact1,
-        othercontactnum2: UserAltContact2,
-        active: "string",
-        // "activationtime": "2022-09-13T18:43:47.135Z",
-        photofilename: fr.result,
-        // "createdby": "string",
-        // "creationtime": "2022-09-13T18:43:47.135Z",
-        passwordhash: PasswordHash,
-      };
-      addUser(ReqJSON); // Perform API Call here
-      console.log(ReqJSON);
+    // fr.onload = () => {
+    //   setFrs(fr.name);
+    //   const ReqJSON = {
+    //     userID: UserId,
+    //     email: UserEmail,
+    //     name: UserName,
+    //     mobilenumber: UserMobile,
+    //     address: UserAddress,
+    //     othercontactnum1: UserAltContact1,
+    //     othercontactnum2: UserAltContact2,
+    //     active: "string",
+    //     // "activationtime": "2022-09-13T18:43:47.135Z",
+    //     photofilename: fr.result,
+    //     // "createdby": "string",
+    //     // "creationtime": "2022-09-13T18:43:47.135Z",
+    //     passwordhash: PasswordHash,
+    //   };
+      addUser(); // Perform API Call here
+      // console.log(ReqJSON);
       // document.getElementById("createUserForm").reset();
-    };
-    fr.readAsDataURL(UserImage);
+    // };
+    // await fr.readAsDataURL(UserImage);
   };
 
-  async function addUser(ReqJSON) {
+  async function addUser() {
     try {
       const response = await fetch(
         "http://evm.iitbhilai.ac.in:8000/createUser",
@@ -81,13 +81,13 @@ function CreateUser() {
             photofilename: "imagefile",
             createdby: "AP00000CEO",
             creationtime: "2022-09-14T17:14:33.658Z",
-            passwordhash: UserPassword,
+            passwordhash: sha256(""),
           }),
         }
       );
       const data2 = await response.json();
       console.log(data2);
-      if(data2["message"]=="User created successfully"){
+      if(data2["message"]==="User created successfully"){
           document.getElementById("createUserForm").reset();
           alert("User Created Successfully")
           window.location.pathname  = "/session/usermanagement";
@@ -117,16 +117,16 @@ function CreateUser() {
           <div className="submit-area">
             <input type={"submit"} value="Submit" />
           </div>
-          <div className="div2 label">Type:</div>
-          <div className="div3 label">Name:</div>
-          <div className="div4 label">Email Address:</div>
-          <div className="div5 label">Address:</div>
+          <div className="div3 label">Type:</div>
+          <div className="div4 label">Name:</div>
+          <div className="div5 label">Email Address:</div>
+          <div className="label">Address:</div>
           <div className="div6 label">User Image:</div>
           <div className="div12 label">User ID:</div>
-          <div className="div13 label">Password:</div>
-          <div className="div14 label">Mobile Number:</div>
-          <div className="div15 label">Alt Contact 1:</div>
-          <div className="div16 label">Alt Contact 2:</div>
+          {/* <div className="div13 label">Password:</div> */}
+          <div className="div13 label">Mobile Number:</div>
+          <div className="div14 label">Alt Contact 1:</div>
+          <div className="div15 label">Alt Contact 2:</div>
 
           <div className="div7">
             <select
@@ -161,14 +161,14 @@ function CreateUser() {
             />
           </div>
 
-          <div className="div18">
+          {/* <div className="div21" style={{display: "none"}}>
             <input
               id="formUserPassword"
               required={true}
               type={"password"}
               placeholder="Password"
             />
-          </div>
+          </div> */}
 
           <div className="div9">
             <input
@@ -215,7 +215,7 @@ function CreateUser() {
             />
           </div>
 
-          <div className="div21">
+          <div className="div18">
             <input
               id="formUserAltNumber2"
               type={"tel"}

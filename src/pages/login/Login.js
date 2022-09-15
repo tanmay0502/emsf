@@ -107,7 +107,7 @@ const Login = () => {
         console.log(err);
       }
     }
-    setUserID(state + PC + AC + role);
+    setUserID(statesCode[states.indexOf(st)] + PC + AC + role);
     setInvalidUser("");
   }
   async function setPCFunc(st){
@@ -136,7 +136,7 @@ const Login = () => {
         console.log(err);
       }
   }
-  setUserID(state + PC + AC + role);
+  setUserID(state + PCsCode[PCs.indexOf(st)] + AC + role);
     setInvalidUser("");
 
 }
@@ -160,7 +160,7 @@ const Login = () => {
       } catch (err) {
         console.log(err);
       }
-    setUserID(state + PC + AC + role);
+    setUserID(state + PC + ACsCode[ACs.indexOf(st)] + role);
     setInvalidUser("");
 
   }
@@ -168,7 +168,7 @@ const Login = () => {
        setRole(rolesCode[roles.indexOf(st)]);
        console.log(rolesCode[roles.indexOf(st)]);
 
-       setUserID(state+PC+AC+role);
+       setUserID(state+PC+AC+rolesCode[roles.indexOf(st)]);
     setInvalidUser("");
 
        console.log(userID);
@@ -374,13 +374,13 @@ const Login = () => {
       <div className="nav flex">
         <div className="logo m-3 p-1">
           <a href="/2">
-            <img src="logo.png" className="h-4/5"></img>
+            <img src="logo.png" className="h-4/5" />
           </a>
         </div>
         <div className="absolute right-3 top-3 w-5 flex">
           <div className="flex justify-between place-content-end  w-full">
             <a href="">
-              <img src="Vector.png"></img>
+              <img src="Vector.png" />
             </a>
           </div>
         </div>
@@ -407,7 +407,7 @@ const Login = () => {
               <h3
                 className="text-center "
                 style={{
-                  fontFamily: "Open sans",
+                  fontFamily: "nunito sans",
                   color: "rgba(0, 0, 0, 0.8)",
                   fontSize: "14px",
                 }}
@@ -421,20 +421,20 @@ const Login = () => {
                 <>
                   <p
                     className="text-black pl-1 text-sm font-semibold"
-                    style={{ fontFamily: "Open sans" }}
+                    style={{ fontFamily: "nunito sans" }}
                   >
                     Mobile Number / User ID
                   </p>
 
                   <input
                     type="text"
-                    className="pl-3 pr-3 mt-1 mb-4 h-10 text-black outline-none rounded-md w-full"
+                    className="pl-3 pr-3 mt-1 mb-4 h-13 text-black outline-none rounded-md w-full"
                     placeholder="Enter Mobile Number/User ID"
                     value={userID}
                     onChange={(e) => setUserID(e.target.value)}
                     style={{
                       backgroundColor: " rgba(30, 76, 247, 0.1)",
-                      fontFamily: "Open sans",
+                      fontFamily: "nunito sans",
                     }}
                   ></input>
                   {invaliduser != "" && (
@@ -445,7 +445,7 @@ const Login = () => {
                   )}
                   <p
                     className="  text-center text-black text-sm font-semibold"
-                    style={{ fontFamily: "Open sans" }}
+                    style={{ fontFamily: "nunito sans" }}
                   >
                     OR
                   </p>
@@ -457,13 +457,13 @@ const Login = () => {
                       <p
                         for="position"
                         className="text-black ml-2 -mb-6 text-sm font-semibold"
-                        style={{ fontFamily: "Open sans" }}
+                        style={{ fontFamily: "nunito sans" }}
                       >
                         State
                       </p>
                       <select
                         className="pl-3 pr-3 mt-7 h-13 text-black outline-none rounded-md w-full mb-5"
-                        style={{ fontFamily: "Open sans" }}
+                        style={{ fontFamily: "nunito sans" }}
                         name="position"
                         // value={state}
                         onChange={(e) => setStateFunc(e.target.value)}
@@ -483,13 +483,13 @@ const Login = () => {
                       <p
                         for="position"
                         className="text-black ml-2 -mb-6 text-sm font-semibold"
-                        style={{ fontFamily: "Open sans" }}
+                        style={{ fontFamily: "nunito sans" }}
                       >
                         PC
                       </p>
                       <select
-                        className="pl-3 pr-3 mt-7 h-10 text-black outline-none rounded-md w-full mb-5"
-                        style={{ fontFamily: "Open sans" }}
+                        className="pl-3 pr-3 mt-7 h-13 text-black outline-none rounded-md w-full mb-5"
+                        style={{ fontFamily: "nunito sans" }}
                         name="position"
                         // value={PC}
                         onChange={(e) => setPCFunc(e.target.value)}
@@ -508,13 +508,13 @@ const Login = () => {
                       <p
                         for="position"
                         className="text-black ml-2 -mb-6 text-sm font-semibold"
-                        style={{ fontFamily: "Open sans" }}
+                        style={{ fontFamily: "nunito sans" }}
                       >
                         AC
                       </p>
                       <select
-                        className="pl-3 pr-3  mt-7 h-10 text-black outline-none rounded-md w-full mb-5"
-                        style={{ fontFamily: "Open sans" }}
+                        className="pl-3 pr-3  mt-7 h-13 text-black outline-none rounded-md w-full mb-5"
+                        style={{ fontFamily: "nunito sans" }}
                         name="position"
                         // value={AC}
                         onChange={(e) => setACFunc(e.target.value)}
@@ -533,13 +533,13 @@ const Login = () => {
                       <p
                         for="position"
                         className="text-black ml-2 -mb-6 text-sm font-semibold"
-                        style={{ fontFamily: "Open sans" }}
+                        style={{ fontFamily: "nunito sans" }}
                       >
                         Role
                       </p>
                       <select
-                        className="pl-3 pr-3 mt-7 h-10 text-black outline-none rounded-md w-full mb-3"
-                        style={{ fontFamily: "Open sans" }}
+                        className="pl-3 pr-3 mt-7 h-13 text-black outline-none rounded-md w-full mb-3"
+                        style={{ fontFamily: "nunito sans" }}
                         name="position"
                         // value={role}
                         onChange={(e) => setRoleFunc(e.target.value)}
